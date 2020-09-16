@@ -1,0 +1,8 @@
+---
+confirmed_user:
+  id: aa063203-ba47-4924-82b0-14b8609dc0a0
+  name: John Doe
+  username: john_doe
+  email: john.doe@example.com
+  encrypted_password: '<%= Devise::Encryptor.digest(User, ''P@ssword!'')'
+  confirmed_at: '2020-09-15 15:11:38'

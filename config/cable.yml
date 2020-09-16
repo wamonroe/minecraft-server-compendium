@@ -1,0 +1,10 @@
+development:
+  adapter: async
+
+test:
+  adapter: test
+
+production:
+  adapter: redis
+  url: <%= ENV.fetch("MSC_REDIS_URL") { "redis://localhost:6379/1" } %>
+  channel_prefix: msc_production

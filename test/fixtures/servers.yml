@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+server_1:
+  id: acced9f3-5c58-4994-9dc8-a796201aaf28
+  name: Server with locations
+  description: This server has several locations
+  hostname: minecraft.example.com
+  port: 25565
+  user_id: aa063203-ba47-4924-82b0-14b8609dc0a0

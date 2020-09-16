@@ -1,0 +1,24 @@
+version: '3.4'
+volumes:
+  db_data:
+    name: msc_db_data_dev
+services:
+  db:
+    image: postgres:12.3-alpine
+    environment:
+      - PGDATA=/var/lib/postgresql/data/pgdata
+      - POSTGRES_USER=msc
+      - POSTGRES_PASSWORD=msc
+    ports:
+      - 5432:5432
+    volumes:
+      - db_data:/var/lib/postgresql/data/pgdata
+  smtp:
+    image: mailhog/mailhog
+    ports:
+      - 1025:1025
+      - 8025:8025
+  redis:
+    image: redis:6.0.6-alpine
+    ports:
+      - 6379:6379

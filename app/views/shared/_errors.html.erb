@@ -1,0 +1,25 @@
+<% if record.errors.any? %>
+  <div class="flex flex-col p-5 text-red-600 bg-red-100 rounded-lg" data-controller="dismissible">
+    <div class="flex items-center">
+      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path></svg>
+      <div class="flex-1 ml-2 font-medium text-red-800">
+        There were <%= pluralize(record.errors.size, 'error') %> errors with your submission
+      </div>
+    </div>
+    <div class="flex mt-3">
+      <div class="flex-none w-5"></div>
+      <div class="flex flex-col flex-1 ml-2">
+        <ul class="text-sm leading-6 list-disc list-inside">
+          <% record.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+        <div class="mt-3">
+          <button class="font-medium text-red-800 cursor-pointer hover:text-red-900" data-action="dismissible#dismiss">
+            Dismiss
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

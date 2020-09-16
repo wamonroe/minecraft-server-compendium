@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+require 'fileutils'
+
+# path to your application root.
+APP_ROOT = File.expand_path('..', __dir__)
+
+def system!(*args)
+  system(*args) || abort("\n== Command #{args} failed ==")
+end
+
+FileUtils.chdir APP_ROOT do
+  # This script is a way to setup or update your test environment automatically.
+  ENV['RAILS_ENV'] = 'test'
+  ENV['COVERAGE'] = 'true'
+
+  system! 'bin/reset_test_env'
+
+  puts "\n== Running tests =="
+  system! 'bin/rails test'
+end
