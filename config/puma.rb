@@ -22,7 +22,7 @@ directory app_dir
 # Specifies the `pidfile` that Puma will use.
 pidfile ENV.fetch('PIDFILE', 'tmp/pids/server.pid')
 
-if rails_env == 'production' && !ENV['PROD_TEST'] == 'true'
+if rails_env == 'production'
   # Set up socket location
   bind "unix://#{tmp_dir}/sockets/puma.sock"
 
