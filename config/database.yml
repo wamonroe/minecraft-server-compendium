@@ -19,8 +19,8 @@ default: &default
   encoding: unicode
   host: <%= ENV.fetch('MSC_DB_HOST', '127.0.0.1') %>
   username: <%= ENV.fetch('MSC_DB_USER', 'msc') %>
-  password: <%= ENV.fetch('MSC_DB_PASSWORD', 'msc') %>
-  pool: <%= ENV.fetch('MSC_RAILS_MAX_THREADS', 5) %>
+  password: <%= ENV.fetch('MSC_DB_PASS', 'msc') %>
+  pool: <%= ENV.fetch('RAILS_MAX_THREADS', 5) %>
 
 development:
   <<: *default
