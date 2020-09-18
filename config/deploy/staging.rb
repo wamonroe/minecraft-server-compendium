@@ -39,7 +39,7 @@ role :db,  fetch(:db_servers)
 
 set :stage, :staging
 
-ask :branch, 'release'
+ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Custom SSH Options
 # ==================
