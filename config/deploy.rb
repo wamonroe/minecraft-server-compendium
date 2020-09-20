@@ -34,8 +34,8 @@ RBP
 append :linked_files, '.rbenv-vars'
 
 # Default value for linked_dirs is []
-# append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system', 'vendor/bundle'
-append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/packs', '.bundle', 'node_modules'
+append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/packs', '.bundle',
+  'node_modules'
 
 # Default value for default_env is {}
 # set :default_env, { path: '/opt/ruby/bin:$PATH' }
@@ -48,22 +48,3 @@ set :keep_releases, 3
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
-
-# Rails settings
-# set :rails_env, 'production'
-# set :migration_role, :app
-# set :migration_servers, -> { primary(fetch(:migration_role)) }
-# set :asset_roles, %i[web app]
-# set :keep_assets, -> { fetch(:keep_releases) }
-
-before 'deploy:assets:precompile', 'deploy:yarn_install'
-namespace :deploy do
-  desc 'Run rake yarn install'
-  task :yarn_install do
-    on roles(:web) do
-      within release_path do
-        execute("cd #{release_path} && yarn install --silent --no-progress --no-audit --no-optional")
-      end
-    end
-  end
-end

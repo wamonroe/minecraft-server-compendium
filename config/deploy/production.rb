@@ -7,6 +7,10 @@
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
+YAML.load_file('config/deploy.yml').dig('production', 'servers').each do |hostname, options|
+  server hostname, **options
+end
+
 # role-based syntax
 # ==================
 
@@ -15,19 +19,9 @@
 # property set. Specify the username and a domain or IP for the server.
 # Don't use `:all`, it's a meta role.
 
-set :app_servers, -> {
-  ENV.select { |e| e.start_with?('MSC_P_APP_SRV') }.values
-}
-set :web_servers, -> {
-  ENV.select { |e| e.start_with?('MSC_P_WEB_SRV') }.values || fetch(:app_servers)
-}
-set :db_servers, -> {
-  ENV.select { |e| e.start_with?('MSC_P_DB_SRV') }.values || fetch(:app_servers)
-}
-
-role :app, fetch(:app_servers)
-role :web, fetch(:web_servers)
-role :db,  fetch(:db_servers)
+# role :app, %w{deploy@example.com}, my_property: :my_value
+# role :web, %w{user1@primary.com user2@additional.com}, other_property: :other_value
+# role :db,  %w{deploy@example.com}
 
 # Configuration
 # =============
@@ -40,6 +34,8 @@ role :db,  fetch(:db_servers)
 set :stage, :production
 
 set :branch, 'main'
+
+set :rails_env, :production
 
 # Custom SSH Options
 # ==================
