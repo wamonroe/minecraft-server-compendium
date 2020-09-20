@@ -44,6 +44,9 @@ module MinecraftServerCompendium
       port: ENV.fetch('MSC_PORT', 3000)
     }
 
+    # Asset settings
+    config.action_controller.asset_host = 'localhost:3000'
+
     # Generator settings
     config.generators do |g|
       # Disable assets
