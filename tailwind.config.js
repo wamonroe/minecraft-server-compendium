@@ -5,9 +5,15 @@ module.exports = {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true
   },
-  purge: [
-    './app/views/**/*.html.erb'
-  ],
+  purge: {
+    content: [
+      '**/*.html.erb',
+      '**/*.js'
+    ],
+    options: {
+      whitelist: ['fixed']
+    }
+  },
   theme: {
     extend: {
       extend: {
