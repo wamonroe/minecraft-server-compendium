@@ -49,6 +49,7 @@ set :keep_releases, 3
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
 
+before 'deploy:assets:precompile', 'deploy:clobber_assets'
 after 'deploy:finished', 'deploy:restart_puma'
 
 namespace :deploy do
