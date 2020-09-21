@@ -48,3 +48,18 @@ set :keep_releases, 3
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
+
+after 'deploy:finished', 'deploy:restart_puma'
+
+namespace :deploy do
+  desc 'Restart Puma'
+  task restart_puma: [:set_rails_env] do
+    on roles(:app) do
+      within release_path do
+        with rails_env: fetch(:rails_env) do
+          execute :bundle, 'exec pumactl -P /srv/msc/shared/tmp/pids/server.pid restart'
+        end
+      end
+    end
+  end
+end
