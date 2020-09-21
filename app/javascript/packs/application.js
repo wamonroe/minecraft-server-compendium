@@ -20,7 +20,7 @@ require("turbolinks").start()
 import "controllers"
 
 // Styles
-import "stylesheets/application.css"
+require("stylesheets/application.css")
 
 // Fonts
-import "typeface-roboto"
+require("typeface-roboto")

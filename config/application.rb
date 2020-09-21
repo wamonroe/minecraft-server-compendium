@@ -37,7 +37,7 @@ module MinecraftServerCompendium
       user_name: ENV['MSC_SMTP_USER'],
       password: ENV['MSC_SMTP_PASS'],
       authentication: 'plain',
-      enable_starttls_auto: ActiveRecord::Type::Boolean.new.cast(ENV['SMTP_TLS'])
+      enable_starttls_auto: ActiveRecord::Type::Boolean.new.cast(ENV['MSC_SMTP_TLS'])
     }
     config.action_mailer.default_url_options = {
       host: ENV.fetch('MSC_HOST', 'localhost'),
