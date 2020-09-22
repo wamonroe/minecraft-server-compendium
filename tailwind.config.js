@@ -1,4 +1,4 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultConfg = require('tailwindcss/defaultConfig')
 
 module.exports = {
   future: {
@@ -6,18 +6,25 @@ module.exports = {
     purgeLayersByDefault: true
   },
   purge: [
-    './app/views/**/*.html.erb'
+    '**/*.html.erb',
+    '**/*.js'
   ],
   theme: {
     extend: {
-      extend: {
-        fontFamily: {
-          sans: ['Roboto', ...defaultTheme.fontFamily.sans]
-        }
+      spacing: {
+        '28': '7rem',
+        '36': '9rem',
+        '72': '20rem'
       }
     },
+    fontFamily: {
+      'sans': ['Roboto', ...defaultConfg.theme.fontFamily.sans]
+    }
   },
-  variants: {},
+  variants: {
+    backgroundColor: [...defaultConfg.variants.backgroundColor, 'group-hover'],
+    textColor: [...defaultConfg.variants.textColor, 'group-hover']
+  },
   plugins: [
     require('@tailwindcss/custom-forms')
   ]
