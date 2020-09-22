@@ -17,6 +17,6 @@ Rails.application.routes.draw do
     put 'users', to: 'users/registrations#update', as: 'user_registration'
   end
 
-  resources :locations, except: %i[index show]
+  resources :locations, except: %i[index]
   resources :servers
 end

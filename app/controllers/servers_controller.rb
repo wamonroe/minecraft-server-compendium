@@ -24,10 +24,10 @@ class ServersController < ApplicationController
   # POST /servers
   # POST /servers.json
   def create
-    @server = Server.new(server_params.merge(user_id: current_user.id))
+    @server = Server.new(permitted_params.merge(user_id: current_user.id))
 
     if @server.save
-      redirect_to @server, notice: 'Server was successfully created.'
+      redirect_to (@referrer_path || @server), notice: 'Server was successfully created.'
     else
       render :new
     end
@@ -36,8 +36,8 @@ class ServersController < ApplicationController
   # PATCH/PUT /servers/1
   # PATCH/PUT /servers/1.json
   def update
-    if @server.update(server_params)
-      redirect_to @server, notice: 'Server was successfully updated.'
+    if @server.update(permitted_params)
+      redirect_to (@referrer_path || @server), notice: 'Server was successfully updated.'
     else
       render :edit
     end
@@ -47,7 +47,7 @@ class ServersController < ApplicationController
   # DELETE /servers/1.json
   def destroy
     @server.destroy
-    redirect_to servers_url, notice: 'Server was successfully destroyed.'
+    redirect_to (@referrer_path || servers_path), notice: 'Server was successfully destroyed.'
   end
 
 private
@@ -58,7 +58,7 @@ private
   end
 
   # Only allow a list of trusted parameters through.
-  def server_params
+  def permitted_params
     params.require(:server).permit(:name, :description, :hostname, :port)
   end
 end

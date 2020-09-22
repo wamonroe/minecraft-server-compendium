@@ -1,8 +1,8 @@
 <%= render 'shared/notice', notice: notice %>
 
-<div class="flex items-end justify-between pt-6 pb-4">
+<div class="flex items-end justify-between px-3 pt-6 pb-4">
   <div class="flex items-center space-x-1 text-green-800">
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+    <%= inline_svg 'icons/collection.svg', class: 'w-6 h-6' %>
     <h1 class="text-2xl font-medium">
       Servers
     </h1>
@@ -10,63 +10,66 @@
   <%= link_to 'New Server', new_server_path, class: 'block rounded-lg bg-green-700 py-2 px-4 text-green-100 hover:bg-green-800' %>
 </div>
 
-<div class="flex flex-col">
-  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-    <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-      <div class="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
-        <table class="min-w-full divide-y divide-gray-200">
-          <thead>
-            <tr>
-              <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-600 uppercase bg-gray-200">
-                <div class="flex justify-center">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                </div>
-              </th>
-              <th class="w-full px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-600 uppercase bg-gray-200">
-                Name
-              </th>
-              <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-600 uppercase bg-gray-200">
-                Hostname
-              </th>
-              <th class="px-6 py-3 bg-gray-200"></th>
-            </tr>
-          </thead>
-          <tbody class="bg-white divide-y divide-gray-200">
-            <% servers.each do |server| %>
-              <tr>
-                <td class="px-6 py-4 whitespace-no-wrap">
-                  <div class="text-sm leading-5 text-center text-gray-900">
-                    <%= link_to server.locations.size, server_path(server), class: 'hover:text-green-800 hover:underline' %>
-                  </div>
-                </td>
-                <td class="w-full px-6 py-4 whitespace-no-wrap">
-                  <div class="text-sm leading-5 text-gray-900">
-                    <%= link_to server.name, server_path(server), class: 'hover:text-green-800 hover:underline' %>
-                  </div>
-                  <div class="text-sm leading-5 text-gray-500">
-                    <%= server.description %>
-                  </div>
-                </td>
-                <td class="px-6 py-4 whitespace-no-wrap">
-                  <div class="text-sm leading-5 text-gray-500">
-                    <%= server.hostname_and_port %>
-                  </div>
-                </td>
-                <td class="px-6 py-4 text-sm whitespace-no-wrap">
-                  <div class="flex justify-end space-x-2 text-sm leading-5 text-gray-600">
-                    <%= link_to edit_server_path(server), class: 'hover:text-green-800' do %>
-                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
-                    <% end %>
-                    <%= link_to server, class: 'hover:text-red-900', method: :delete, data: { confirm: 'Are you sure?' } do %>
-                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
-                    <% end %>
-                  </div>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
+<div class="flex flex-col overflow-hidden shadow-md sm:rounded-lg">
+  <%# Header Row %>
+  <div class="flex items-center text-xs font-medium leading-4 tracking-wider text-left text-gray-600 uppercase bg-gray-200">
+    <%# location column header %>
+    <div class="flex-none w-16 px-6 py-3">
+      <%= inline_svg 'icons/location-marker.svg', class: 'w-4 h-4' %>
+    </div>
+    <%# name and description responsive column headers %>
+    <div class="flex flex-col flex-1 px-6 py-3 xl:flex-row">
+      <div class="xl:pr-6 xl:w-2/5">Name</div>
+      <div class="hidden xl:pl-6 xl:w-3/5 xl:block">Description</div>
+    </div>
+    <%# hostname column header (hidden on mobile) %>
+    <div class="flex-none hidden w-56 px-6 py-3 sm:block">Hostname</div>
+    <%# actions column header %>
+    <div class="flex-none w-20 px-6 py-3 md:w-28"><%# Actions %></div>
+  </div>
+  <%# Content Rows %>
+  <% servers.each do |server| %>
+    <div class="flex items-center text-sm leading-5 text-gray-900 bg-white border-b border-gray-200">
+      <%# information and main action %>
+      <div class="relative flex items-center flex-1 group hover:bg-green-200">
+        <%# main action link %>
+        <%= link_to '', server_path(server), class: 'block absolute inset-0'%>
+        <%# location column %>
+        <div class="flex items-center justify-center flex-none w-16 px-6 py-3 group-hover:text-green-800">
+          <%= server.locations.size %>
+        </div>
+        <%# name and description responsive columns %>
+        <div class="flex flex-col flex-1 px-6 py-3 xl:flex-row">
+          <div class="xl:pr-6 xl:w-2/5 group-hover:text-green-800">
+            <%= server.name %>
+          </div>
+          <div class="text-gray-500 xl:pl-6 xl:w-3/5">
+            <%= server.description %>
+          </div>
+        </div>
+        <%# hostname (hidden on mobile) %>
+        <div class="flex-none hidden w-56 px-6 py-3 text-gray-500 sm:block">
+          <%= server.hostname_and_port %>
+        </div>
+        <%# chevron for tablet and mobile (hidden above tablet) %>
+        <%# takes the place of secondary actions on table and mobile %>
+        <div class="flex flex-none w-20 px-6 py-3 text-gray-700 md:hidden group-hover:text-green-700">
+          <%= inline_svg_tag 'icons/chevron-right.svg', class: 'w-8 h-8' %>
+        </div>
+      </div>
+      <%# secondary actions (hidden on tablet and mobile) %>
+      <div class="items-center self-stretch flex-none hidden text-gray-600 justify-evenly w-28 md:flex">
+        <div class="relative w-1/2 h-full group hover:bg-green-200">
+          <%= link_to edit_server_path(server, referrer: referrer_for(servers_path)), class: 'absolute flex inset-0 flex items-center justify-center group-hover:text-green-800' do %>
+            <%= inline_svg 'icons/pencil-alt.svg', class: 'w-6 h-6' %>
+          <% end %>
+        </div>
+        <div class="relative w-1/2 h-full group hover:bg-red-200">
+          <%= link_to server, class: 'absolute inset-0 flex items-center justify-center group-hover:text-red-900', method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <%= inline_svg 'icons/trash.svg', class: 'w-6 h-6' %>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
 </div>
