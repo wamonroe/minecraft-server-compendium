@@ -1,7 +1,11 @@
 class LocationsController < ApplicationController
-  before_action :set_location, only: %i[edit update destroy]
+  before_action :set_location, only: %i[show edit update destroy]
 
   decorates_assigned :location
+
+  # GET /servers/1
+  # GET /servers/1.json
+  def show; end
 
   # GET /locations/new
   def new
@@ -14,10 +18,10 @@ class LocationsController < ApplicationController
   # POST /locations
   # POST /locations.json
   def create
-    @location = Location.new(location_params.merge(user_id: current_user.id))
+    @location = Location.new(permitted_create_params.merge(user_id: current_user.id))
 
     if @location.save
-      redirect_to @location.server, notice: 'Location was successfully created.'
+      redirect_to (@referrer_path || @location.server), notice: 'Location was successfully created.'
     else
       render :new
     end
@@ -26,8 +30,8 @@ class LocationsController < ApplicationController
   # PATCH/PUT /locations/1
   # PATCH/PUT /locations/1.json
   def update
-    if @location.update(location_params)
-      redirect_to @location.server, notice: 'Location was successfully updated.'
+    if @location.update(permitted_update_params)
+      redirect_to (@referrer_path || @location.server), notice: 'Location was successfully updated.'
     else
       render :edit
     end
@@ -37,7 +41,7 @@ class LocationsController < ApplicationController
   # DELETE /locations/1.json
   def destroy
     @location.destroy
-    redirect_to @location.server, notice: 'Location was successfully destroyed.'
+    redirect_to (@referrer_path || @location.server), notice: 'Location was successfully destroyed.'
   end
 
 private
@@ -48,7 +52,11 @@ private
   end
 
   # Only allow a list of trusted parameters through.
-  def location_params
+  def permitted_create_params
     params.require(:location).permit(:name, :description, :dimension, :x, :y, :z, :server_id)
+  end
+
+  def permitted_update_params
+    params.require(:location).permit(:name, :description, :dimension, :x, :y, :z)
   end
 end

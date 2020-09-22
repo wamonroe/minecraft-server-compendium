@@ -1,34 +1,30 @@
 <% content_for(:body) do %>
   <div class="flex flex-col">
-    <div class="flex items-center justify-center flex-none h-12 text-white bg-green-800">
-      <div class="flex justify-between w-full h-full max-w-screen-lg">
-        <div class="flex items-center px-3 space-x-3">
-          <%= link_to servers_path, class: 'pr-3 flex space-x-2' do %>
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
-            <div>Minecraft Server Compendium</div>
-          <% end %>
-          <% if content_for?(:active_server) %>
-            <%= yield :active_server %>
-          <% end %>
-        </div>
-        <div class="flex items-center">
-          <div class="relative" data-controller="dropdown">
-            <button class="relative z-10 block w-8 h-8 rounded-full" data-action="dropdown#toggle">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-            </button>
-            <div class="absolute right-0 w-48 py-2 text-gray-800 bg-white border-2 border-gray-200 rounded-lg shadow-xl" data-target="dropdown.menu">
-              <%= link_to 'Account Settings', edit_user_registration_path(current_user), class: 'block px-4 py-2 hover:bg-green-200 hover:text-green-700' %>
-              <%= link_to 'Invite another user', new_user_invitation_path, class: 'block px-4 py-2 hover:bg-green-200 hover:text-green-700' %>
-              <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'block px-4 py-2 hover:bg-green-200 hover:text-green-700' %>
-            </div>
+    <div class="flex justify-between flex-none h-12 px-4 text-green-100 bg-green-800 sm:px-8 md:px-12">
+      <div class="flex flex-1 px-3 space-x-3">
+        <%= link_to servers_path, class: 'flex items-center space-x-2' do %>
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+          <div class="hidden md:block">Minecraft Server Compendium</div>
+        <% end %>
+        <% if content_for?(:active_server) %>
+          <%= yield :active_server %>
+        <% end %>
+      </div>
+      <div class="flex items-center flex-none w-8">
+        <div class="relative" data-controller="dropdown">
+          <button class="relative z-10 block w-8 h-8 rounded-full" data-action="dropdown#toggle">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+          </button>
+          <div class="absolute right-0 z-10 w-48 py-2 text-gray-800 bg-white border-2 border-gray-200 rounded-lg shadow-xl" data-target="dropdown.menu">
+            <%= link_to 'Account Settings', edit_user_registration_path(current_user), class: 'block px-4 py-2 hover:bg-green-200 hover:text-green-700' %>
+            <%= link_to 'Invite another user', new_user_invitation_path, class: 'block px-4 py-2 hover:bg-green-200 hover:text-green-700' %>
+            <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'block px-4 py-2 hover:bg-green-200 hover:text-green-700' %>
           </div>
         </div>
       </div>
     </div>
-    <div class="flex flex-col items-center flex-1">
-      <div class="w-full max-w-screen-lg p-3">
-        <%= yield %>
-      </div>
+    <div class="flex flex-col flex-1 px-4 sm:px-8 md:px-12">
+      <%= yield %>
     </div>
   </div>
 <% end %>

@@ -11,7 +11,7 @@ export default class extends Controller {
 
       // Create an overlay
       this.overlay = document.createElement("button")
-      this.overlay.classList.add("fixed", "inset-0", "cursor-default")
+      this.overlay.classList.add("fixed", "inset-0", "cursor-default", "w-full", "h-full")
       this.overlay.setAttribute("tabindex", "-1")
       this.overlay.setAttribute("data-action", "dropdown#hide")
 

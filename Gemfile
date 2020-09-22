@@ -16,6 +16,7 @@ gem 'puma', '~> 4.1'
 # gem 'redis', '~> 4.0'
 
 # JavaScript and assets
+gem 'inline_svg'
 gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
