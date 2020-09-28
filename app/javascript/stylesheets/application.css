@@ -5,3 +5,13 @@
 .form-submit {
   @apply opacity-100 appearance-none;
 }
+
+/* Notification countdown animation for alert_controller */
+@keyframes alert-countdown {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }
+}

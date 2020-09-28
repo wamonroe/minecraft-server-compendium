@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   before_action :set_referrer
   before_action :set_referrer_path
 
+  add_flash_types :error, :success
+
 private
 
   def set_referrer

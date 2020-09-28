@@ -1,0 +1,2 @@
+require_relative 'minecraft_server_compendium/colors'
+require_relative 'minecraft_server_compendium/fetch_or_fallback'

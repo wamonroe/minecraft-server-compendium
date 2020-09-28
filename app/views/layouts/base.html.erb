@@ -12,6 +12,13 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body class="flex flex-col bg-gray-100">
+    <div class="fixed inset-0 px-4 py-6 pointer-events-none sm:p-6 sm:items-start sm:justify-end">
+      <div class="flex flex-col items-end justify-center">
+        <% flash.each do |type, data| %>
+          <%= render AlertComponent.new(type: type, data: data) %>
+        <% end %>
+      </div>
+    </div>
     <%= content_for?(:body) ? yield(:body) : yield %>
   </body>
 </html>

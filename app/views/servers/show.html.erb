@@ -1,20 +1,18 @@
-<%= render 'shared/notice', notice: notice %>
-
 <% content_for(:active_server) do %>
   <%= render 'servers/menu_link', server: server %>
 <% end %>
 
 <div class="flex items-center justify-between pt-6 pb-4 text-green-800">
   <div class="flex items-center">
-    <%= inline_svg 'icons/server.svg', class: 'w-6 h-6' %>
+    <%= inline_svg_tag 'icons/server.svg', class: 'w-6 h-6' %>
     <div class="flex flex-col ml-2">
       <h1 class="text-lg font-medium sm:text-2xl"><%= server.name %></h1>
       <div class="text-sm font-normal leading-5 text-gray-500">(<%= server.hostname_and_port %>)</div>
     </div>
   </div>
   <div class="flex items-center">
-    <%= link_to edit_server_path(server, referrer: referrer_for(server_path(server))), class: 'text-gray-600 hover:text-gray-900 px-6 py-3' do %>
-      <%= inline_svg 'icons/pencil-alt.svg', class: 'w-6 h-6' %>
+    <%= link_to edit_server_path(server, referrer: referrer_for(server_path(server))), class: 'px-6 py-3 text-gray-600 hover:text-gray-900' do %>
+      <%= inline_svg_tag 'icons/pencil-alt.svg', class: 'w-6 h-6' %>
     <% end %>
   </div>
 </div>
@@ -29,10 +27,10 @@
 
 <div class="flex items-center justify-between pt-6 pb-4">
   <div class="flex items-center space-x-1 text-green-800">
-    <%= inline_svg 'icons/location-marker.svg', class: 'w-6 h-6' %>
+    <%= inline_svg_tag 'icons/location-marker.svg', class: 'w-6 h-6' %>
     <h2 class="font-medium sm:text-xl">Points of Interest</h2>
   </div>
-  <%= link_to 'New', new_location_path(server_id: server.id, referrer: referrer_for(server_path(server))), class: 'block rounded-lg bg-green-700 py-2 px-4 text-green-100 hover:bg-green-800' %>
+  <%= link_to 'New', new_location_path(server_id: server.id, referrer: referrer_for(server_path(server))), class: 'block px-4 py-2 text-green-100 bg-green-700 rounded-lg hover:bg-green-800' %>
 </div>
 
 
@@ -58,7 +56,7 @@
       <%# information and main action %>
       <div class="relative flex items-center flex-1 group hover:bg-green-200">
         <%# main action link %>
-        <%= link_to '', location_path(location), class: 'block absolute inset-0'%>
+        <%= link_to '', location_path(location), class: 'absolute inset-0 block'%>
         <%# name and description responsive columns %>
         <div class="flex flex-col flex-1 px-6 py-3 xl:flex-row">
           <div class="xl:pr-6 xl:w-2/5 group-hover:text-green-800">
@@ -86,13 +84,13 @@
       <%# secondary actions (hidden on tablet and mobile) %>
       <div class="items-center self-stretch flex-none hidden text-gray-600 justify-evenly w-28 md:flex">
         <div class="relative w-1/2 h-full group hover:bg-green-200">
-          <%= link_to edit_location_path(location, referrer: referrer_for(server_path(location.server_id))), class: 'absolute flex inset-0 flex items-center justify-center group-hover:text-green-800' do %>
-            <%= inline_svg 'icons/pencil-alt.svg', class: 'w-6 h-6' %>
+          <%= link_to edit_location_path(location, referrer: referrer_for(server_path(location.server_id))), class: 'absolute inset-0 flex items-center justify-center group-hover:text-green-800' do %>
+            <%= inline_svg_tag 'icons/pencil-alt.svg', class: 'w-6 h-6' %>
           <% end %>
         </div>
         <div class="relative w-1/2 h-full group hover:bg-red-200">
           <%= link_to location, class: 'absolute inset-0 flex items-center justify-center group-hover:text-red-900', method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <%= inline_svg 'icons/trash.svg', class: 'w-6 h-6' %>
+            <%= inline_svg_tag 'icons/trash.svg', class: 'w-6 h-6' %>
           <% end %>
         </div>
       </div>

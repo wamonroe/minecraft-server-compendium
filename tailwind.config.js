@@ -7,7 +7,9 @@ module.exports = {
   },
   purge: [
     '**/*.html.erb',
-    '**/*.js'
+    '**/*.js',
+    'app/components/**/*_component.rb',
+    'app/decorators/**/*_decorator.rb'
   ],
   theme: {
     extend: {

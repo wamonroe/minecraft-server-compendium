@@ -1,0 +1,40 @@
+<div class="z-10 hidden w-full max-w-md bg-white rounded-lg shadow-lg pointer-events-auto" data-controller="alert" data-alert-timeout="<%= @data[:timeout] %>">
+  <div class="overflow-hidden rounded-lg shadow-xs">
+    <div class="p-4">
+      <div class="flex items-center">
+        <%= inline_svg_tag @icon_path, class: "w-6 h-6 #{@icon_color} flex-shrink-0" %>
+        <div class="text-sm flex-1 ml-2 overflow-hidden whitespace-no-wrap font-medium leading-5 <%= @title_color %>">
+          <%= @data[:title] %>
+        </div>
+        <div class="flex flex-shrink-0 ml-4">
+          <button class="inline-flex text-gray-400 transition duration-150 ease-in-out focus:outline-none focus:text-gray-500" data-action="alert#close">
+            <%= inline_svg_tag 'icons/x.svg', class: 'w-5 h-5' %>
+          </button>
+        </div>
+      </div>
+      <div class="flex items-start">
+        <div class="flex-none w-6"></div>
+        <div class="w-0 ml-2 flex-1 pt-0.5">
+          <% if @data[:body].present? %>
+            <p class="mt-1 text-sm leading-5 text-gray-500">
+              <%= @data[:body] %>
+            </p>
+          <% end %>
+          <% if @data[:action].present? %>
+            <div class="mt-2" data-target="alert.buttons">
+              <a <% if @data.dig(:action, :method) == 'get' %> href="<%= @data.dig(:action, :url) %>" <% else %> href="#" data-action="alert#run" <% end %> class="text-sm font-medium leading-5 text-indigo-600 transition duration-150 ease-in-out hover:text-indigo-500 focus:outline-none focus:underline">
+                <%= @data.dig(:action, :name) %>
+              </a>
+              <button data-action="alert#close" class="ml-6 text-sm font-medium leading-5 text-gray-700 transition duration-150 ease-in-out hover:text-gray-500 focus:outline-none focus:underline">
+                <%= t('.dismiss') %>
+              </button>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% if @data[:countdown] %>
+      <div class="w-0 h-1 bg-indigo-600 rounded-lg" data-target="alert.countdown"></div>
+    <% end %>
+  </div>
+</div>

@@ -16,13 +16,14 @@ gem 'puma', '~> 4.1'
 # gem 'redis', '~> 4.0'
 
 # JavaScript and assets
-gem 'inline_svg'
+gem 'inline_svg', github: 'jamesmartin/inline_svg', branch: 'main'
 gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
 
 # Presentation
 gem 'draper'
+gem 'view_component'
 
 # Other
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -42,9 +43,9 @@ group :development do
 
   # Server deployment
   gem 'capistrano', require: false
+  # gem 'capistrano3-puma', require: false
   gem 'capistrano-rails', require: false
   gem 'capistrano-rbenv', require: false
-  gem 'capistrano3-puma', require: false
 end
 
 group :test do

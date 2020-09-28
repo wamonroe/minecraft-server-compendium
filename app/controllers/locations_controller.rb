@@ -21,7 +21,7 @@ class LocationsController < ApplicationController
     @location = Location.new(permitted_create_params.merge(user_id: current_user.id))
 
     if @location.save
-      redirect_to (@referrer_path || @location.server), notice: 'Location was successfully created.'
+      redirect_to (@referrer_path || @location.server), success: 'Location was successfully created.'
     else
       render :new
     end
@@ -31,7 +31,7 @@ class LocationsController < ApplicationController
   # PATCH/PUT /locations/1.json
   def update
     if @location.update(permitted_update_params)
-      redirect_to (@referrer_path || @location.server), notice: 'Location was successfully updated.'
+      redirect_to (@referrer_path || @location.server), success: 'Location was successfully updated.'
     else
       render :edit
     end
@@ -41,7 +41,7 @@ class LocationsController < ApplicationController
   # DELETE /locations/1.json
   def destroy
     @location.destroy
-    redirect_to (@referrer_path || @location.server), notice: 'Location was successfully destroyed.'
+    redirect_to (@referrer_path || @location.server), success: 'Location was successfully destroyed.'
   end
 
 private

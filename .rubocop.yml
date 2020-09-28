@@ -36,6 +36,10 @@ Layout/MultilineMethodCallIndentation:
 Layout/SpaceAroundEqualsInParameterDefault:
   EnforcedStyle: no_space
 
+Lint/MissingSuper:
+  Exclude:
+      - 'app/components/**/*_component.rb'
+
 Lint/UselessAccessModifier:
   ContextCreatingMethods:
     - included
