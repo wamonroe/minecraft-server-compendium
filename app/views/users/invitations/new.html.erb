@@ -10,9 +10,9 @@
       <%= form.label field, class: 'block text-sm font-medium leading-5 text-gray-700' %>
       <div class="relative mt-1 rounded-md shadow-sm">
         <% if field.to_s.include?('email') %>
-          <%= form.email_field field, class: 'block w-full pr-12 form-input pl-7 sm:text-sm sm:leading-5' %>
+          <%= form.email_field field, class: 'block w-full pr-12 form-input sm:text-sm sm:leading-5' %>
         <% else %>
-          <%= form.text_field field, class: 'block w-full pr-12 form-input pl-7 sm:text-sm sm:leading-5' %>
+          <%= form.text_field field, class: 'block w-full pr-12 form-input sm:text-sm sm:leading-5' %>
         <% end %>
       </div>
     </div>

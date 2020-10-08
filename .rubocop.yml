@@ -30,6 +30,10 @@ Layout/HashAlignment:
 Layout/LineLength:
   Max: 100
 
+Lint/MissingSuper:
+  Exclude:
+    - 'app/components/**/*_component.rb'
+
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 

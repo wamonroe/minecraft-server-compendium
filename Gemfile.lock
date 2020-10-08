@@ -1,3 +1,21 @@
+GIT
+  remote: https://github.com/activerecord-hackery/ransack.git
+  revision: c9cc20de9e0f7bab92e0579c85bed64d614d23de
+  specs:
+    ransack (2.3.2)
+      activerecord (>= 5.2.1)
+      activesupport (>= 5.2.1)
+      i18n
+
+GIT
+  remote: https://github.com/jamesmartin/inline_svg.git
+  revision: 23dcb648f697833649520435d080f0e883de2744
+  branch: main
+  specs:
+    inline_svg (1.7.1)
+      activesupport (>= 3.0)
+      nokogiri (>= 1.6)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -121,9 +139,6 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
-    inline_svg (1.7.1)
-      activesupport (>= 3.0)
-      nokogiri (>= 1.6)
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -260,6 +275,8 @@ GEM
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
     unicode-display_width (1.7.0)
+    view_component (2.19.1)
+      activesupport (>= 5.0.0, < 7.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.0.4)
@@ -296,12 +313,13 @@ DEPENDENCIES
   devise
   devise_invitable
   draper
-  inline_svg
+  inline_svg!
   listen (~> 3.2)
   mocha
   pg
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.3)
+  ransack!
   rubocop
   rubocop-performance
   rubocop-rails
@@ -311,6 +329,7 @@ DEPENDENCIES
   simplecov
   turbolinks (~> 5)
   tzinfo-data
+  view_component
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)

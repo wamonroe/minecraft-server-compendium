@@ -6,7 +6,8 @@ class ServersController < ApplicationController
   # GET /servers
   # GET /servers.json
   def index
-    @servers = Server.all
+    @q = Server.ransack(params[:q])
+    @servers = @q.result
   end
 
   # GET /servers/1

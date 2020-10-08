@@ -23,4 +23,4 @@ import "controllers"
 require("stylesheets/application.css")
 
 // Fonts
-require("typeface-roboto")
+require("typeface-inter")
