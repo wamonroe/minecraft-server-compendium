@@ -1,4 +1,4 @@
-<%= component :container do %>
+<%= component :container, data: { controller: 'tab' } do %>
   <div class="flex flex-col p-2 mb-4">
     <div class="flex justify-between h-12">
       <div class="text-lg font-medium"><%= @server.name %></div>
@@ -8,13 +8,22 @@
     </div>
 
     <div class="flex space-x-10 text-gray-500 border-b border-gray-300">
-      <button class="border-b-2 border-transparent hover:text-gray-800 hover:border-gray-800">Locations</button>
-      <button class="border-b-2 border-transparent hover:text-gray-800 hover:border-gray-800">Server Details</button>
+      <button class="text-gray-800 border-b-2 border-gray-800" data-action="tab#select" data-target="tab.tab" data-tab-target="details">
+        Details
+      </button>
+      <button class="border-b-2 border-transparent hover:text-gray-800 hover:border-gray-800" data-action="tab#select" data-target="tab.tab" data-tab-target="locations">
+        Locations
+      </button>
     </div>
   </div>
 
-  <%= component :panel do %>
-    <%# server details %>
-    <div class="h-72"></div>
+  <%# details %>
+  <%= component :panel, id: 'details', data: { target: 'tab.content' } do %>
+    <%= component 'servers/detail', server: @server %>
+  <% end %>
+
+  <%# locations %>
+  <%= component :panel, id: 'locations', class: 'hidden', data: { target: 'tab.content' } do %>
+    <%= component_with_collection 'locations/list_item', @server.locations %>
   <% end %>
 <% end %>

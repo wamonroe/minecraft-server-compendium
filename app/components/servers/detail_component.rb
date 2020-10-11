@@ -1,7 +1,5 @@
 module Servers
-  class ListItemComponent < ApplicationComponent
-    with_collection_parameter :server
-
+  class DetailComponent < ApplicationComponent
     def initialize(server:, **options)
       @server = server.decorate
       parse_options(options)

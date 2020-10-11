@@ -1,0 +1,8 @@
+<%= tag.div class: merge_classes('flex flex-col', @additional_classes), **@options do %>
+  <div class="flex p-4 font-medium text-gray-900 border-b border-gray-300">
+    <%= @server.hostname_and_port %>
+  </div>
+  <div class="flex p-4 text-gray-900">
+    <%= @server.description %>
+  </div>
+<% end %>

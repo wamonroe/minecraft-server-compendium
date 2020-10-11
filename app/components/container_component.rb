@@ -6,7 +6,8 @@ class ContainerComponent < ApplicationComponent
     xl: 'max-w-screen-xl'
   }.with_indifferent_access.freeze
 
-  def initialize(size: :md)
+  def initialize(size: :md, **options)
     @size = SIZES[size]
+    parse_options(options)
   end
 end
