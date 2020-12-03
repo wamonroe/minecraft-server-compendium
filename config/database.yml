@@ -17,19 +17,20 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  pool: <%= ENV.fetch('RAILS_MAX_THREADS', 5) %>
+
+development: &development
+  <<: *default
+  database: msc_dev
   host: <%= ENV.fetch('MSC_DB_HOST', '127.0.0.1') %>
   username: <%= ENV.fetch('MSC_DB_USER', 'msc') %>
   password: <%= ENV.fetch('MSC_DB_PASS', 'msc') %>
-  pool: <%= ENV.fetch('RAILS_MAX_THREADS', 5) %>
-
-development:
-  <<: *default
-  database: msc_dev
 
 test:
-  <<: *default
+  <<: *development
   database: msc_test
 
 production:
   <<: *default
   database: msc
+  url: <%= ENV['DATABASE_URL'] %>
