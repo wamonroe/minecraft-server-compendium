@@ -26,6 +26,7 @@ gem 'draper'
 
 # Other
 gem 'bootsnap', '>= 1.4.2', require: false
+gem 'rack-timeout'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
