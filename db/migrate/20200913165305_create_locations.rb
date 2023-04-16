@@ -8,8 +8,8 @@ class CreateLocations < ActiveRecord::Migration[6.0]
       t.integer :y
       t.integer :z
 
-      t.references :server, type: :uuid, null: false, foreign_key: { on_delete: :cascade }
-      t.references :user, type: :uuid, foreign_key: { on_delete: :nullify }
+      t.references :server, type: :uuid, null: false, foreign_key: {on_delete: :cascade}
+      t.references :user, type: :uuid, foreign_key: {on_delete: :nullify}
 
       t.timestamps
 

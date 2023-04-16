@@ -1,70 +1,61 @@
 <% content_for(:header) do %>
   <h1 class="mt-6 text-3xl font-extrabold leading-9 text-gray-900">Edit <%= resource_name.to_s.humanize %></h1>
 <% end %>
-
 <% content_for(:footer) do %>
   <div class="flex flex-col items-center space-y-6">
-    <%= link_to "Close my account", user_registration_path, data: { confirm: "Are you sure?" }, method: :delete, class: 'block text-gray-500 hover:text-gray-800' %>
+    <%= button_to "Close my account", user_registration_path, method: :delete, form: {class: "block text-gray-500 hover:text-gray-800", data: {turbo_confirm: "Are you sure?"}} %>
   </div>
 <% end %>
-
-<%= form_for(resource, as: resource_name, url: user_registration_path, html: { method: :put, class: 'flex flex-col space-y-6' }) do |form| %>
+<%= form_for(resource, as: resource_name, url: user_registration_path, html: {method: :put, class: "flex flex-col space-y-6"}) do |form| %>
   <%= render "shared/errors", record: resource %>
-
   <div class="flex flex-col">
-    <%= form.label :name, class: 'block text-sm leading-5 font-medium text-gray-700' %>
+    <%= form.label :name, class: "block text-sm leading-5 font-medium text-gray-700" %>
     <div class="relative mt-1 rounded-md shadow-sm">
-      <%= form.text_field :name, autofocus: true, autocomplete: 'name', class: 'form-input block w-full pl-7 pr-12 sm:text-sm sm:leading-5' %>
+      <%= form.text_field :name, autofocus: true, autocomplete: "name", class: "block w-full pl-7 pr-12 sm:text-sm sm:leading-5" %>
     </div>
   </div>
-
   <div class="flex flex-col">
-    <%= form.label :username, class: 'block text-sm leading-5 font-medium text-gray-700' %>
+    <%= form.label :username, class: "block text-sm leading-5 font-medium text-gray-700" %>
     <div class="relative mt-1 rounded-md shadow-sm">
-      <%= form.text_field :username, class: 'form-input block w-full pl-7 pr-12 sm:text-sm sm:leading-5' %>
+      <%= form.text_field :username, class: "block w-full pl-7 pr-12 sm:text-sm sm:leading-5" %>
     </div>
   </div>
-
   <div class="flex flex-col">
-    <%= form.label :email, class: 'block text-sm leading-5 font-medium text-gray-700' %>
+    <%= form.label :email, class: "block text-sm leading-5 font-medium text-gray-700" %>
     <div class="relative mt-1 rounded-md shadow-sm">
-      <%= form.email_field :email, autocomplete: 'email', class: 'form-input block w-full pl-7 pr-12 sm:text-sm sm:leading-5' %>
+      <%= form.email_field :email, autocomplete: "email", class: "block w-full pl-7 pr-12 sm:text-sm sm:leading-5" %>
     </div>
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <div class="text-sm leading-5 text-gray-600">Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
   </div>
-
   <div class="flex flex-col">
     <div class="flex items-baseline">
-      <%= form.label :password, class: 'block text-sm leading-5 font-medium text-gray-700' %>
+      <%= form.label :password, class: "block text-sm leading-5 font-medium text-gray-700" %>
       <% if @minimum_password_length %>
         <span class="ml-2 text-sm text-gray-600">(<%= @minimum_password_length %> characters minimum)</span>
       <% end %>
     </div>
     <div class="relative mt-1 rounded-md shadow-sm">
-      <%= form.password_field :password, autocomplete: 'new-password', class: 'form-input block w-full pl-7 pr-12 sm:text-sm sm:leading-5' %>
+      <%= form.password_field :password, autocomplete: "new-password", class: "block w-full pl-7 pr-12 sm:text-sm sm:leading-5" %>
     </div>
     <div class="text-sm leading-5 text-gray-600">Leave blank if you don't want to change it</div>
   </div>
-
   <div class="flex flex-col">
-    <%= form.label :password_confirmation, 'Confirm new password', class: 'block text-sm leading-5 font-medium text-gray-700' %>
+    <%= form.label :password_confirmation, "Confirm new password", class: "block text-sm leading-5 font-medium text-gray-700" %>
     <div class="relative mt-1 rounded-md shadow-sm">
-      <%= form.password_field :password_confirmation, autocomplete: 'new-password', class: 'form-input block w-full pl-7 pr-12 sm:text-sm sm:leading-5' %>
+      <%= form.password_field :password_confirmation, autocomplete: "new-password", class: "block w-full pl-7 pr-12 sm:text-sm sm:leading-5" %>
     </div>
   </div>
-
   <div class="flex flex-col">
-    <%= form.label :current_password, 'Confirm new password', class: 'block text-sm leading-5 font-medium text-gray-700' %>
+    <%= form.label :current_password, "Confirm new password", class: "block text-sm leading-5 font-medium text-gray-700" %>
     <div class="relative mt-1 rounded-md shadow-sm">
-      <%= form.password_field :current_password, autocomplete: 'current-password', class: 'form-input block w-full pl-7 pr-12 sm:text-sm sm:leading-5' %>
+      <%= form.password_field :current_password, autocomplete: "current-password", class: "block w-full pl-7 pr-12 sm:text-sm sm:leading-5" %>
     </div>
     <div class="text-sm leading-5 text-gray-600">We need your current password to confirm your changes</div>
   </div>
-
   <div class="flex items-center justify-between">
-    <%= form.submit 'Update', class: 'rounded-lg bg-green-700 py-2 px-4 text-green-100 hover:bg-green-800 cursor-pointer' %>
-    <%= link_to 'Cancel', root_path, class: 'block text-gray-600 hover:text-gray-800 py-2 px-4' %>
+    <%= form.submit "Update", class: "rounded-lg bg-green-700 py-2 px-4 text-green-100 hover:bg-green-800 cursor-pointer" %>
+    <%= link_to "Cancel", root_path, class: "block text-gray-600 hover:text-gray-800 py-2 px-4" %>
   </div>
 <% end %>

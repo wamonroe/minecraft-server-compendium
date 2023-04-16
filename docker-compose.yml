@@ -1,9 +1,9 @@
 volumes:
   db_data:
-    name: mcsc_db_data_dev
+    name: msc_db_data_dev
 
 x-dev: &dev
-  image: mcsc_app
+  image: msc_app
   build: .
   env_file:
     - ./.env
@@ -15,6 +15,7 @@ x-dev-app: &dev-app
   environment:
     - DB_HOST=db
     - REDIS_HOST=redis
+    - SMTP_HOST=smtp
   depends_on:
     - db
     - redis

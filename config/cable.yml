@@ -1,10 +1,13 @@
+default: &default
+  adapter: redis
+  url: <%= MSC.settings.redis_url %>
+  channel_prefix: <%= MSC.settings.redis_prefix %>
+
 development:
-  adapter: async
+  <<: *default
 
 test:
   adapter: test
 
 production:
-  adapter: redis
-  url: <%= ENV.fetch("MSC_REDIS_URL") { "redis://localhost:6379/1" } %>
-  channel_prefix: msc_production
+<<: *default

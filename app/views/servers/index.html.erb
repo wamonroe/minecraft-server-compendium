@@ -1,21 +1,19 @@
-<%= render 'shared/notice', notice: notice %>
-
+<%= render "shared/notice", notice: notice %>
 <div class="flex items-end justify-between px-3 pt-6 pb-4">
   <div class="flex items-center space-x-1 text-green-800">
-    <%= inline_svg 'icons/collection.svg', class: 'w-6 h-6' %>
+    <%= inline_svg "icons/collection.svg", class: "w-6 h-6" %>
     <h1 class="text-2xl font-medium">
       Servers
     </h1>
   </div>
-  <%= link_to 'New Server', new_server_path, class: 'block rounded-lg bg-green-700 py-2 px-4 text-green-100 hover:bg-green-800' %>
+  <%= link_to "New Server", new_server_path, class: "block rounded-lg bg-green-700 py-2 px-4 text-green-100 hover:bg-green-800" %>
 </div>
-
 <div class="flex flex-col overflow-hidden shadow-md sm:rounded-lg">
   <%# Header Row %>
   <div class="flex items-center text-xs font-medium leading-4 tracking-wider text-left text-gray-600 uppercase bg-gray-200">
     <%# location column header %>
     <div class="flex-none w-16 px-6 py-3">
-      <%= inline_svg 'icons/location-marker.svg', class: 'w-4 h-4' %>
+      <%= inline_svg "icons/location-marker.svg", class: "w-4 h-4" %>
     </div>
     <%# name and description responsive column headers %>
     <div class="flex flex-col flex-1 px-6 py-3 xl:flex-row">
@@ -33,7 +31,7 @@
       <%# information and main action %>
       <div class="relative flex items-center flex-1 group hover:bg-green-200">
         <%# main action link %>
-        <%= link_to '', server_path(server), class: 'block absolute inset-0'%>
+        <%= link_to "", server_path(server), class: "block absolute inset-0" %>
         <%# location column %>
         <div class="flex items-center justify-center flex-none w-16 px-6 py-3 group-hover:text-green-800">
           <%= server.locations.size %>
@@ -54,19 +52,19 @@
         <%# chevron for tablet and mobile (hidden above tablet) %>
         <%# takes the place of secondary actions on table and mobile %>
         <div class="flex flex-none w-20 px-6 py-3 text-gray-700 md:hidden group-hover:text-green-700">
-          <%= inline_svg_tag 'icons/chevron-right.svg', class: 'w-8 h-8' %>
+          <%= inline_svg_tag "icons/chevron-right.svg", class: "w-8 h-8" %>
         </div>
       </div>
       <%# secondary actions (hidden on tablet and mobile) %>
       <div class="items-center self-stretch flex-none hidden text-gray-600 justify-evenly w-28 md:flex">
         <div class="relative w-1/2 h-full group hover:bg-green-200">
-          <%= link_to edit_server_path(server, referrer: referrer_for(servers_path)), class: 'absolute flex inset-0 flex items-center justify-center group-hover:text-green-800' do %>
-            <%= inline_svg 'icons/pencil-alt.svg', class: 'w-6 h-6' %>
+          <%= link_to edit_server_path(server, referrer: referrer_for(servers_path)), class: "absolute flex inset-0 flex items-center justify-center group-hover:text-green-800" do %>
+            <%= inline_svg "icons/pencil-alt.svg", class: "w-6 h-6" %>
           <% end %>
         </div>
         <div class="relative w-1/2 h-full group hover:bg-red-200">
-          <%= link_to server, class: 'absolute inset-0 flex items-center justify-center group-hover:text-red-900', method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <%= inline_svg 'icons/trash.svg', class: 'w-6 h-6' %>
+          <%= button_to server, method: :delete, form: {class: "absolute inset-0 flex items-center justify-center group-hover:text-red-900", data: {turbo_confirm: "Are you sure?"}} do %>
+            <%= inline_svg "icons/trash.svg", class: "w-6 h-6" %>
           <% end %>
         </div>
       </div>

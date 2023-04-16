@@ -1,9 +1,9 @@
 <% if record.errors.any? %>
   <div class="flex flex-col p-5 text-red-600 bg-red-100 rounded-lg" data-controller="dismissible">
     <div class="flex items-center">
-      <%= inline_svg 'icons/x-circle-solid.svg', class: 'w-5 h-5' %>
+      <%= inline_svg "icons/x-circle-solid.svg", class: "w-5 h-5" %>
       <div class="flex-1 ml-2 font-medium text-red-800">
-        There were <%= pluralize(record.errors.size, 'error') %> errors with your submission
+        There were <%= pluralize(record.errors.size, "error") %> errors with your submission
       </div>
     </div>
     <div class="flex mt-3">

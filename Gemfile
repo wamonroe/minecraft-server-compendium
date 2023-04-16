@@ -1,35 +1,42 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.2.1'
+ruby "3.2.1"
 
-gem 'rails', '~> 6.0.3', '>= 6.0.3.3'
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-
-# Authentication and authorization
-gem 'devise'
-gem 'devise_invitable'
+gem "rails", "~> 7.0.4", ">= 7.0.4.3"
 
 # Drivers
-gem 'pg'
-gem 'puma', '~> 4.1'
-gem 'redis', '~> 4.0'
+gem "pg", "~> 1.1"
+gem "puma", "~> 5.0"
+gem "redis", "~> 4.0"
+
+# Authentication and authorization
+gem "devise"
+gem "devise_invitable"
 
 # JavaScript and assets
-gem 'inline_svg'
-gem 'sass-rails', '>= 6'
-gem 'turbolinks', '~> 5'
-gem 'webpacker', '~> 4.0'
+gem "cssbundling-rails"
+gem "jsbundling-rails"
+gem "sprockets-rails"
 
 # Presentation
-gem 'draper'
+gem "draper"
+
+# UI
+gem "inline_svg"
+gem "stimulus-rails"
+# gem "tag_options"
+gem "turbo-rails"
+# gem "vcfb"
+# gem "view_component"
 
 # Other
-gem 'bootsnap', '>= 1.4.2', require: false
+gem "bootsnap", require: false
+gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem "dotenv"
+  gem "pry-byebug", "~> 3.10", ">= 3.10.1"
 
   # Code formating and linting
   gem "erb_lint", require: false
@@ -40,15 +47,14 @@ group :development, :test do
 end
 
 group :development do
-  gem 'listen', '~> 3.2'
-  gem 'web-console', '>= 3.3.0'
+  gem "web-console", ">= 3.3.0"
 end
 
 group :test do
-  gem 'capybara', '>= 2.15'
-  gem 'mocha'
-  gem 'selenium-webdriver'
-  gem 'shoulda'
-  gem 'simplecov', require: false
-  gem 'webdrivers'
+  gem "capybara", ">= 2.15"
+  gem "mocha"
+  gem "selenium-webdriver"
+  gem "shoulda"
+  gem "simplecov", require: false
+  gem "webdrivers"
 end

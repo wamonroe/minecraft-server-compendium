@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class LocationTest < ActiveSupport::TestCase
   should validate_presence_of(:name)
@@ -21,15 +21,15 @@ class LocationTest < ActiveSupport::TestCase
   should have_db_index(:user_id)
   should have_db_index(%i[server_id name]).unique
 
-  context '#dimension=' do
-    should 'sets the value when provided a valid key' do
+  context "#dimension=" do
+    should "sets the value when provided a valid key" do
       value = Location.dimensions.keys.first
       subject.dimension = value
       assert_equal value, subject.dimension
     end
 
-    should 'set the value to nil when provided an invalid key' do
-      subject.dimension = 'abcdefg'
+    should "set the value to nil when provided an invalid key" do
+      subject.dimension = "abcdefg"
       assert_nil subject.dimension
     end
   end
