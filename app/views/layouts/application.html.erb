@@ -15,7 +15,7 @@
           <button class="relative z-10 block w-8 h-8 rounded-full" data-action="dropdown#toggle">
             <%= inline_svg "icons/cog.svg", class: "w-6 h-6" %>
           </button>
-          <div class="absolute right-0 z-10 w-48 py-2 text-gray-800 bg-white border-2 border-gray-200 rounded-lg shadow-xl" data-target="dropdown.menu">
+          <div class="absolute right-0 z-10 w-48 py-2 text-gray-800 bg-white border-2 border-gray-200 rounded-lg shadow-xl" data-dropdown-target="menu">
             <%= link_to "Account Settings", edit_user_registration_path(current_user), class: "block px-4 py-2 hover:bg-green-200 hover:text-green-700" %>
             <%= link_to "Invite another user", new_user_invitation_path, class: "block px-4 py-2 hover:bg-green-200 hover:text-green-700" %>
             <%= button_to "Sign out", destroy_user_session_path, method: :delete, form: {class: "block px-4 py-2 hover:bg-green-200 hover:text-green-700"} %>
