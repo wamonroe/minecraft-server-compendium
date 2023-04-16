@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :set_referrer
   before_action :set_referrer_path
 
-private
+  private
 
   def set_referrer
     @referrer = params.permit(:referrer)[:referrer]

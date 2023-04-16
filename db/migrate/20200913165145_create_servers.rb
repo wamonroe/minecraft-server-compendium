@@ -6,7 +6,7 @@ class CreateServers < ActiveRecord::Migration[6.0]
       t.string :hostname
       t.integer :port, default: 25565
 
-      t.references :user, type: :uuid, foreign_key: { on_delete: :nullify }
+      t.references :user, type: :uuid, foreign_key: {on_delete: :nullify}
 
       t.integer :locations_count
 

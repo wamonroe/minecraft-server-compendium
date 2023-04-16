@@ -2,7 +2,7 @@ class LocationDecorator < ApplicationDecorator
   delegate_all
 
   def coordinates
-    [x, y, z].join(', ')
+    [x, y, z].join(", ")
   end
 
   def dimension_name

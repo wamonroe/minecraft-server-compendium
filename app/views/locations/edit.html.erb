@@ -1,12 +1,10 @@
 <% content_for(:active_server) do %>
-  <%= render 'servers/menu_link', server: location.server %>
+  <%= render "servers/menu_link", server: location.server %>
 <% end %>
-
 <div class="flex items-end justify-between pt-6 pb-4">
   <div class="flex items-center space-x-1 text-green-800">
-    <%= inline_svg 'icons/location-marker.svg', class: 'w-6 h-6' %>
+    <%= inline_svg "icons/location-marker.svg", class: "w-6 h-6" %>
     <h1 class="text-2xl font-medium">Edit Point of Interest</h1>
   </div>
 </div>
-
-<%= render 'form', location: location %>
+<%= render "form", location: location %>

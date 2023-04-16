@@ -1,0 +1,5 @@
+#!/bin/ash -e
+
+bundle install
+yarn install
+bundle exec rails db:prepare

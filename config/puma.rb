@@ -1,4 +1,4 @@
-require 'yaml'
+require "yaml"
 
 # Puma can serve each request in a thread from an internal thread pool.
 # The `threads` method setting takes two numbers: a minimum and maximum.
@@ -6,23 +6,28 @@ require 'yaml'
 # the maximum value specified for Puma. Default is set to 5 threads for minimum
 # and maximum; this matches the default thread size of Active Record.
 #
-max_threads_count = ENV.fetch('RAILS_MAX_THREADS', 5)
-min_threads_count = ENV.fetch('RAILS_MIN_THREADS', max_threads_count)
+max_threads_count = MSC.settings.rails_max_threads
+min_threads_count = MSC.settings.rails_min_threads
 threads min_threads_count, max_threads_count
 
+# Specifies the `worker_timeout` threshold that Puma will use to wait before
+# terminating a worker in development environments.
+#
+worker_timeout 3600 if MSC.settings.rails_env.development?
+
 # Specifies the `environment` that Puma will run in.
-rails_env = ENV.fetch('RAILS_ENV', 'development')
-environment rails_env
+#
+environment MSC.settings.rails_env
 
 # Specifies the `directory` that Puma will run the application from
-app_dir = File.expand_path('..', __dir__)
+app_dir = File.expand_path("..", __dir__)
 tmp_dir = "#{app_dir}/tmp"
 directory app_dir
 
 # Specifies the `pidfile` that Puma will use.
-pidfile ENV.fetch('PIDFILE', 'tmp/pids/server.pid')
+pidfile MSC.settings.pidfile
 
-if rails_env == 'production'
+if MSC.settings.rails_env.production?
   # Set up socket location
   bind "unix://#{tmp_dir}/sockets/puma.sock"
 
@@ -32,11 +37,11 @@ if rails_env == 'production'
   # Workers do not work on JRuby or Windows (both of which do not support
   # processes).
   #
-  workers_count = ENV.fetch('WEB_CONCURRENCY', 1).to_i
+  workers MSC.settings.web_concurrency
 
   if workers_count > 1
     # Load database configuration
-    db_cfg = YAML.load_file('config/database.yml')['production']
+    db_cfg = YAML.load_file("config/database.yml")["production"]
 
     workers workers_count
 
@@ -59,7 +64,7 @@ if rails_env == 'production'
   end
 else
   # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
-  port ENV.fetch('PORT', 3000)
+  port MSC.settings.web_port
 
   # Allow puma to be restarted by `rails restart` command.
   plugin :tmp_restart

@@ -11,7 +11,8 @@ class ServersController < ApplicationController
 
   # GET /servers/1
   # GET /servers/1.json
-  def show; end
+  def show
+  end
 
   # GET /servers/new
   def new
@@ -19,7 +20,8 @@ class ServersController < ApplicationController
   end
 
   # GET /servers/1/edit
-  def edit; end
+  def edit
+  end
 
   # POST /servers
   # POST /servers.json
@@ -27,7 +29,7 @@ class ServersController < ApplicationController
     @server = Server.new(permitted_params.merge(user_id: current_user.id))
 
     if @server.save
-      redirect_to (@referrer_path || @server), notice: 'Server was successfully created.'
+      redirect_to (@referrer_path || @server), notice: "Server was successfully created."
     else
       render :new
     end
@@ -37,7 +39,7 @@ class ServersController < ApplicationController
   # PATCH/PUT /servers/1.json
   def update
     if @server.update(permitted_params)
-      redirect_to (@referrer_path || @server), notice: 'Server was successfully updated.'
+      redirect_to (@referrer_path || @server), notice: "Server was successfully updated."
     else
       render :edit
     end
@@ -47,10 +49,10 @@ class ServersController < ApplicationController
   # DELETE /servers/1.json
   def destroy
     @server.destroy
-    redirect_to (@referrer_path || servers_path), notice: 'Server was successfully destroyed.'
+    redirect_to (@referrer_path || servers_path), notice: "Server was successfully destroyed."
   end
 
-private
+  private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_server

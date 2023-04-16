@@ -1,38 +1,32 @@
-<%= form_with model: server, local: true, class: 'flex flex-col space-y-4' do |form| %>
-  <%= render 'shared/errors', record: server %>
-
+<%= form_with model: server, local: true, class: "flex flex-col space-y-4" do |form| %>
+  <%= render "shared/errors", record: server %>
   <%= hidden_field_tag :referrer, @referrer %>
-
   <div class="flex flex-col">
-    <%= form.label :name, class: 'block text-sm leading-5 font-medium text-gray-700' %>
+    <%= form.label :name, class: "block text-sm leading-5 font-medium text-gray-700" %>
     <div class="relative mt-1 rounded-md shadow-sm">
-      <%= form.text_field :name, class: 'form-input block w-full pl-7 pr-12 sm:text-sm sm:leading-5' %>
+      <%= form.text_field :name, class: "block w-full pl-7 pr-12 sm:text-sm sm:leading-5" %>
     </div>
   </div>
-
   <div class="flex flex-col">
-    <%= form.label :description, class: 'block text-sm leading-5 font-medium text-gray-700' %>
+    <%= form.label :description, class: "block text-sm leading-5 font-medium text-gray-700" %>
     <div class="relative mt-1 rounded-md shadow-sm">
-      <%= form.text_field :description, class: 'form-input block w-full pl-7 pr-12 sm:text-sm sm:leading-5' %>
+      <%= form.text_field :description, class: "block w-full pl-7 pr-12 sm:text-sm sm:leading-5" %>
     </div>
   </div>
-
   <div class="flex flex-col">
-    <%= form.label :hostname, class: 'block text-sm leading-5 font-medium text-gray-700' %>
+    <%= form.label :hostname, class: "block text-sm leading-5 font-medium text-gray-700" %>
     <div class="relative mt-1 rounded-md shadow-sm">
-      <%= form.text_field :hostname, class: 'form-input block w-full pl-7 pr-12 sm:text-sm sm:leading-5' %>
+      <%= form.text_field :hostname, class: "block w-full pl-7 pr-12 sm:text-sm sm:leading-5" %>
     </div>
   </div>
-
   <div class="flex flex-col">
-    <%= form.label :port, class: 'block text-sm leading-5 font-medium text-gray-700' %>
+    <%= form.label :port, class: "block text-sm leading-5 font-medium text-gray-700" %>
     <div class="relative mt-1 rounded-md shadow-sm">
-      <%= form.text_field :port, class: 'form-input block w-full pl-7 pr-12 sm:text-sm sm:leading-5' %>
+      <%= form.text_field :port, class: "block w-full pl-7 pr-12 sm:text-sm sm:leading-5" %>
     </div>
   </div>
-
   <div class="flex items-center justify-between">
-    <%= form.submit class: 'rounded-lg bg-green-700 py-2 px-4 text-green-100 hover:bg-green-800 cursor-pointer' %>
-    <%= link_to 'Cancel', (@referrer_path || servers_path), class: 'rounded-lg text-gray-600 hover:text-gray-800 py-2 px-4' %>
+    <%= form.submit class: "rounded-lg bg-green-700 py-2 px-4 text-green-100 hover:bg-green-800 cursor-pointer" %>
+    <%= link_to "Cancel", (@referrer_path || servers_path), class: "rounded-lg text-gray-600 hover:text-gray-800 py-2 px-4" %>
   </div>
 <% end %>

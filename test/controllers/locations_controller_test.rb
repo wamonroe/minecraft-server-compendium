@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class LocationsControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -8,19 +8,19 @@ class LocationsControllerTest < ActionDispatch::IntegrationTest
     sign_in @user
   end
 
-  test 'should get new' do
-    get new_location_url
+  test "should get new" do
+    get new_location_url(server_id: @server.id)
     assert_response :success
   end
 
-  test 'should create location' do
-    assert_difference('Location.count') do
+  test "should create location" do
+    assert_difference("Location.count") do
       post locations_url, params: {
-        location: { name: 'New location', x: 55, y: 55, z: 55, server_id: @server.id }
+        location: {name: "New location", x: 55, y: 55, z: 55, server_id: @server.id}
       }
     end
 
-    location = Location.find_by(name: 'New location')
+    location = Location.find_by(name: "New location")
     assert_not_nil location
 
     unless location.nil?
@@ -29,18 +29,18 @@ class LocationsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'should get edit' do
+  test "should get edit" do
     get edit_location_url(@location)
     assert_response :success
   end
 
-  test 'should update location' do
-    patch location_url(@location), params: { location: { name: 'New location name' } }
+  test "should update location" do
+    patch location_url(@location), params: {location: {name: "New location name"}}
     assert_redirected_to server_url(@location.server)
   end
 
-  test 'should destroy location' do
-    assert_difference('Location.count', -1) do
+  test "should destroy location" do
+    assert_difference("Location.count", -1) do
       delete location_url(@location)
     end
 
