@@ -28,6 +28,10 @@
 /storage/*
 !/storage/.keep
 
+# Ignore all environment files.
+/.env*
+!/.env.example
+
 /public/assets
 .byebug_history
 .rbenv-vars
